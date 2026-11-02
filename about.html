@@ -1,11 +1,14 @@
 <!doctype html>
-<html>
+<html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn more about OffGrid Apparel, a local South African streetwear and Y2K fashion brand.">
+    <meta name="keywords" content="About OffGrid Apparel, South African streetwear brand, Y2K fashion, local clothing retailer">
     <title>OffGrid Apparel - About Us</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body class="page-about">
 
     <!-- Header -->
@@ -25,14 +28,53 @@
         </ul>
     </nav>
 
-    <form>
-        <input type="search" placeholder="Search...">
-        <button>Search</button>
-    </form>
 
+    <div class="header-actions">
+        <!-- dynamic searchbox -->
+    <div class="header-search">
+    <button class="search-toggle"
+            type="button"
+            aria-label="Open search"
+            aria-expanded="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="10.8" cy="10.8" r="6.8"></circle>
+            <path d="m16 16 5 5"></path>
+        </svg>
+    </button>
+
+    <form class="search-panel" action="search.html" method="get">
+        <input
+            type="search"
+            id="site-search"
+            name="q"
+            placeholder="Search OffGrid..."
+            autocomplete="off"
+            aria-label="Search OffGrid Apparel">
+
+        <div class="search-suggestions" id="search-suggestions">
+            <a href="shop.html" data-search="shop products clothing">
+                Shop products
+            </a>
+            <a href="collection.html" data-search="collection collections">
+                Explore collection
+            </a>
+            <a href="about.html" data-search="about us brand">
+                About OffGrid
+            </a>
+            <a href="contact.html" data-search="contact support">
+                Contact us
+            </a>
+        </div>
+    </form>
+</div>
+
+
+<!-- cart -->
     <a href="cart.html">
         <img class="cart" src="images/grocery-store (1).png" alt="Shopping cart">
     </a>
+    </div>
+    
 
 </header>
 
@@ -111,6 +153,7 @@
 
     </footer>
 
+<script src="js/script.js"></script>
 </body>
 
 </html>
