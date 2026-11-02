@@ -1,0 +1,6 @@
+# Allow all search engine crawlers
+User-agent: *
+Disallow: /cart.html
+
+# Sitemap location
+Sitemap: https://offgrid-apparel.netlify.app/sitemap.xml
