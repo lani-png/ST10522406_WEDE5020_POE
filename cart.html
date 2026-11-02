@@ -1,7 +1,11 @@
 <!doctype html>
-<html>
+<html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="View your OffGrid Apparel shopping cart and proceed to secure checkout.">
+    <meta name="keywords" content="shopping cart, checkout, OffGrid Apparel order, streetwear cart">
     <title>OffGrid Apparel - Shopping Cart</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -9,7 +13,7 @@
 <body class="page-cart">
 
     <!-- Header -->
-    <header>
+   <header>
 
     <a href="index.html">
         <img class="logo" src="images/OffGrid-logo.png" alt="OffGrid Apparel logo">
@@ -25,73 +29,59 @@
         </ul>
     </nav>
 
-    <form>
-        <input type="search" placeholder="Search...">
-        <button>Search</button>
-    </form>
 
+    <div class="header-actions">
+        <!-- dynamic searchbox -->
+    <div class="header-search">
+    <button class="search-toggle"
+            type="button"
+            aria-label="Open search"
+            aria-expanded="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="10.8" cy="10.8" r="6.8"></circle>
+            <path d="m16 16 5 5"></path>
+        </svg>
+    </button>
+
+    <form class="search-panel" action="search.html" method="get">
+        <input
+            type="search"
+            id="site-search"
+            name="q"
+            placeholder="Search OffGrid..."
+            autocomplete="off"
+            aria-label="Search OffGrid Apparel">
+
+        <div class="search-suggestions" id="search-suggestions">
+            <a href="shop.html" data-search="shop products clothing">
+                Shop products
+            </a>
+            <a href="collection.html" data-search="collection collections">
+                Explore collection
+            </a>
+            <a href="about.html" data-search="about us brand">
+                About OffGrid
+            </a>
+            <a href="contact.html" data-search="contact support">
+                Contact us
+            </a>
+        </div>
+    </form>
+</div>
+
+
+<!-- cart -->
     <a href="cart.html">
         <img class="cart" src="images/grocery-store (1).png" alt="Shopping cart">
     </a>
+    </div>
+    
 
 </header>
 
-    <main>
-
-        <!-- Shopping Cart -->
-        <h1>Your Shopping Cart</h1>
-
-        <section>
-
-            <!-- Product 1 -->
-            <article>
-                <img src="images/product1.jpg" alt="Graphic T-shirt">
-
-                <h2>Graphic T-Shirt</h2>
-                <p>Size: Medium</p>
-                <p>Quantity: 1</p>
-                <p>Price: R399</p>
-
-                <button>Remove</button>
-            </article>
-
-
-            <!-- Product 2 -->
-            <article>
-                <img src="images/product2.jpg" alt="Baggy jeans">
-
-                <h2>Baggy Jeans</h2>
-                <p>Size: 32</p>
-                <p>Quantity: 1</p>
-                <p>Price: R699</p>
-
-                <button>Remove</button>
-            </article>
-
-        </section>
-
-
-        <!-- Cart Summary -->
-        <section>
-
-            <h2>Cart Summary</h2>
-
-            <p>Subtotal: R1,098</p>
-            <p>Delivery: R80</p>
-            <p><strong>Total: R1,178</strong></p>
-
-            <button>Proceed to Checkout</button>
-
-        </section>
-
-
-        <!-- Continue Shopping -->
-        <p>
-            <a href="shop.html">Continue Shopping</a>
-        </p>
-
-    </main>
-
+  <main>
+    <!-- Content dynamically filled by js/script.js -->
+</main>
 
     <!-- Footer -->
     <footer>
@@ -99,7 +89,7 @@
         <p>&copy; 2026 OffGrid Apparel. All rights reserved.</p>
 
     </footer>
-
+<script src="js/script.js"></script>
 </body>
 
 </html>
