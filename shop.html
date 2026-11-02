@@ -1,16 +1,16 @@
 <!doctype html>
-<html>
-
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Shop OffGrid Apparel for graphic tees, jeans and streetwear accessories.">
     <title>OffGrid Apparel - Shop</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body class="page-shop">
 
-    <!-- Header -->
-     <header>
-
+<header>
     <a href="index.html">
         <img class="logo" src="images/OffGrid-logo.png" alt="OffGrid Apparel logo">
     </a>
@@ -18,113 +18,303 @@
     <nav>
         <ul>
             <li><a href="index.html">Home</a></li>
-            <li><a href="shop.html">Shop</a></li>
+            <li><a href="shop.html" aria-current="page">Shop</a></li>
             <li><a href="collection.html">Collection</a></li>
             <li><a href="about.html">About Us</a></li>
             <li><a href="contact.html">Contact</a></li>
         </ul>
     </nav>
 
-    <form>
-        <input type="search" placeholder="Search...">
-        <button>Search</button>
-    </form>
+    <div class="header-actions">
+        <div class="header-search">
+            <button class="search-toggle" type="button"
+                    aria-label="Open search" aria-expanded="false">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="10.8" cy="10.8" r="6.8"></circle>
+                    <path d="m16 16 5 5"></path>
+                </svg>
+            </button>
 
-    <a href="cart.html">
-        <img class="cart" src="images/grocery-store (1).png" alt="Shopping cart">
-    </a>
+            <form class="search-panel" action="search.html" method="get">
+                <input type="search" id="site-search" name="q"
+                       placeholder="Search OffGrid..." autocomplete="off"
+                       aria-label="Search OffGrid Apparel">
 
+                <div class="search-suggestions" id="search-suggestions">
+                    <a href="shop.html" data-search="shop products clothing">Shop products</a>
+                    <a href="collection.html" data-search="collection collections">Explore collection</a>
+                    <a href="about.html" data-search="about us brand">About OffGrid</a>
+                    <a href="contact.html" data-search="contact support">Contact us</a>
+                </div>
+            </form>
+        </div>
+
+        <a href="cart.html" aria-label="View shopping cart">
+            <img class="cart" src="images/grocery-store (1).png" alt="">
+        </a>
+    </div>
 </header>
 
+<main class="shop-main">
 
-    <main>
+    <div class="shop-heading">
+        <div>
+            <p class="shop-eyebrow">THE OFFGRID EDIT</p>
+            <h1>Shop OffGrid Apparel</h1>
+            <p>Everyday essentials. Different energy.</p>
+        </div>
+    </div>
 
-        <!-- Shop Introduction -->
-        <h1>Shop OffGrid Apparel</h1>
-        <p>Explore our latest clothing and accessories.</p>
+    <div class="shop-toolbar">
+        <button class="mobile-filter-toggle" id="filter-toggle"
+                type="button" aria-expanded="false" aria-controls="shop-filters">
+            <span aria-hidden="true">☷</span> Filters
+        </button>
 
+        <p class="product-count" id="product-count" aria-live="polite">
+            6 products
+        </p>
 
-        <!-- Men's Clothing -->
-        <section>
+        <label class="sort-control">
+            <span>Sort by</span>
+            <select id="sort-products">
+                <option value="featured">Featured</option>
+                <option value="price-low">Price: low to high</option>
+                <option value="price-high">Price: high to low</option>
+                <option value="name">Name: A–Z</option>
+            </select>
+        </label>
+    </div>
 
-            <h2>Men</h2>
+    <div class="shop-layout">
 
-            <!-- Men's Graphic T-Shirt -->
-            <article>
-                <img src="images/graphic_tees.jpg" alt="Men's graphic T-shirt">
-                <h3>Graphic T-Shirt</h3>
-                <p>R399</p>
-                <button>Add to Cart</button>
-            </article>
+        <div class="filter-backdrop" id="filter-backdrop"></div>
 
-            <!-- Men's Baggy Jeans -->
-            <article>
-                <img src="images/baggy_jeans.jpg" alt="Men's baggy jeans">
-                <h3>Baggy Jeans</h3>
-                <p>R699</p>
-                <button>Add to Cart</button>
-            </article>
+        <aside class="shop-filters" id="shop-filters"
+               aria-label="Product filters">
 
+            <div class="filter-heading">
+                <h2>Filters</h2>
+                <button type="button" class="filter-close" id="filter-close"
+                        aria-label="Close filters">×</button>
+            </div>
+
+            <div class="filter-group">
+                <h3>Category</h3>
+
+                <label class="filter-option">
+                    <input type="checkbox" name="category" value="Men">
+                    <span>Men</span>
+                </label>
+
+                <label class="filter-option">
+                    <input type="checkbox" name="category" value="Women">
+                    <span>Women</span>
+                </label>
+
+                <label class="filter-option">
+                    <input type="checkbox" name="category" value="Accessories">
+                    <span>Accessories</span>
+                </label>
+            </div>
+
+            <div class="filter-group">
+                <div class="price-filter-heading">
+                    <h3>Maximum price</h3>
+                    <output id="price-value" for="price-range">R800+</output>
+                </div>
+
+                <input type="range" id="price-range" min="200" max="800"
+                       step="50" value="800">
+
+                <div class="price-range-labels">
+                    <span>R200</span>
+                    <span>R800+</span>
+                </div>
+            </div>
+
+            <div class="filter-group">
+                <h3>Quick filters</h3>
+
+                <label class="filter-option">
+                    <input type="checkbox" id="under-400">
+                    <span>Under R400</span>
+                </label>
+            </div>
+
+            <button type="button" id="clear-filters" class="clear-filters">
+                Clear all filters
+            </button>
+        </aside>
+
+        <section class="shop-products" aria-label="All products">
+            <div class="product-grid" id="product-grid">
+
+                <article class="product-card" data-category="Men"
+                         data-price="399" data-name="Graphic T-Shirt">
+                    <a class="product-image-link" href="product-graphic-tee.html"
+                       aria-label="View Graphic T-Shirt">
+                        <div class="product-image-wrap">
+                            <img src="images/graphic_tees.jpg"
+                                 alt="Men's graphic T-shirt"
+                                 loading="lazy" width="600" height="750">
+                            <span class="product-badge">MEN</span>
+                        </div>
+                    </a>
+                    <div class="product-details">
+                        <p class="product-category">Men's Clothing</p>
+                        <h2><a href="product-graphic-tee.html">Graphic T-Shirt</a></h2>
+                        <div class="product-card-bottom">
+                            <p class="product-price">R399</p>
+                            <button class="add-to-cart" type="button"
+                                    aria-label="Add Graphic T-Shirt to cart"
+                                    data-product="Graphic T-Shirt" data-price="399">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="product-card" data-category="Men"
+                         data-price="699" data-name="Baggy Jeans">
+                    <a class="product-image-link" href="product-baggy-jeans.html"
+                       aria-label="View Baggy Jeans">
+                        <div class="product-image-wrap">
+                            <img src="images/baggy_jeans.jpg"
+                                 alt="Men's baggy jeans"
+                                 loading="lazy" width="600" height="750">
+                            <span class="product-badge">MEN</span>
+                        </div>
+                    </a>
+                    <div class="product-details">
+                        <p class="product-category">Men's Clothing</p>
+                        <h2><a href="product-baggy-jeans.html">Baggy Jeans</a></h2>
+                        <div class="product-card-bottom">
+                            <p class="product-price">R699</p>
+                            <button class="add-to-cart" type="button"
+                                    aria-label="Add Baggy Jeans to cart"
+                                    data-product="Baggy Jeans" data-price="699">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="product-card" data-category="Women"
+                         data-price="299" data-name="Cropped Top">
+                    <a class="product-image-link" href="product-cropped-top.html"
+                       aria-label="View Cropped Top">
+                        <div class="product-image-wrap">
+                            <img src="images/cropped_top.jpg"
+                                 alt="Women's cropped top"
+                                 loading="lazy" width="600" height="750">
+                            <span class="product-badge">WOMEN</span>
+                        </div>
+                    </a>
+                    <div class="product-details">
+                        <p class="product-category">Women's Clothing</p>
+                        <h2><a href="product-cropped-top.html">Cropped Top</a></h2>
+                        <div class="product-card-bottom">
+                            <p class="product-price">R299</p>
+                            <button class="add-to-cart" type="button"
+                                    aria-label="Add Cropped Top to cart"
+                                    data-product="Cropped Top" data-price="299">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="product-card" data-category="Women"
+                         data-price="699" data-name="Wide Leg Jeans">
+                    <a class="product-image-link" href="product-wide-jeans.html"
+                       aria-label="View Wide Leg Jeans">
+                        <div class="product-image-wrap">
+                            <img src="images/wide_jeans.jpg"
+                                 alt="Women's wide leg jeans"
+                                 loading="lazy" width="600" height="750">
+                            <span class="product-badge">WOMEN</span>
+                        </div>
+                    </a>
+                    <div class="product-details">
+                        <p class="product-category">Women's Clothing</p>
+                        <h2><a href="product-wide-jeans.html">Wide Leg Jeans</a></h2>
+                        <div class="product-card-bottom">
+                            <p class="product-price">R699</p>
+                            <button class="add-to-cart" type="button"
+                                    aria-label="Add Wide Leg Jeans to cart"
+                                    data-product="Wide Leg Jeans" data-price="699">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="product-card" data-category="Accessories"
+                         data-price="199" data-name="Classic Cap">
+                    <a class="product-image-link" href="product-cap.html"
+                       aria-label="View Classic Cap">
+                        <div class="product-image-wrap">
+                            <img src="images/cap.jpg"
+                                 alt="OffGrid Apparel cap"
+                                 loading="lazy" width="600" height="750">
+                            <span class="product-badge">ACCESSORY</span>
+                        </div>
+                    </a>
+                    <div class="product-details">
+                        <p class="product-category">Accessories</p>
+                        <h2><a href="product-cap.html">Classic Cap</a></h2>
+                        <div class="product-card-bottom">
+                            <p class="product-price">R199</p>
+                            <button class="add-to-cart" type="button"
+                                    aria-label="Add Classic Cap to cart"
+                                    data-product="Classic Cap" data-price="199">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="product-card" data-category="Accessories"
+                         data-price="349" data-name="Shoulder Bag">
+                    <a class="product-image-link" href="product-shoulder-bag.html"
+                       aria-label="View Shoulder Bag">
+                        <div class="product-image-wrap">
+                            <img src="images/shoulder_bag.jpg"
+                                 alt="OffGrid Apparel shoulder bag"
+                                 loading="lazy" width="600" height="750">
+                            <span class="product-badge">ACCESSORY</span>
+                        </div>
+                    </a>
+                    <div class="product-details">
+                        <p class="product-category">Accessories</p>
+                        <h2><a href="product-shoulder-bag.html">Shoulder Bag</a></h2>
+                        <div class="product-card-bottom">
+                            <p class="product-price">R349</p>
+                            <button class="add-to-cart" type="button"
+                                    aria-label="Add Shoulder Bag to cart"
+                                    data-product="Shoulder Bag" data-price="349">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+
+            <div class="no-products" id="no-products" hidden>
+                <h2>No products found</h2>
+                <p>Try changing your filters to see more of OffGrid.</p>
+                <button type="button" id="reset-no-products">Clear filters</button>
+            </div>
         </section>
+    </div>
+</main>
 
+<footer>
+    <p>&copy; 2026 OffGrid Apparel. All rights reserved.</p>
+</footer>
 
-        <!-- Women's Clothing -->
-        <section>
-
-            <h2>Women</h2>
-
-            <!-- Women's Cropped Top -->
-            <article>
-                <img src="images/cropped_top.jpg" alt="Women's cropped top">
-                <h3>Cropped Top</h3>
-                <p>R299</p>
-                <button>Add to Cart</button>
-            </article>
-
-            <!-- Women's Wide Leg Jeans -->
-            <article>
-                <img src="images/wide_jeans.jpg" alt="Women's wide leg jeans">
-                <h3>Wide Leg Jeans</h3>
-                <p>R699</p>
-                <button>Add to Cart</button>
-            </article>
-
-        </section>
-
-
-        <!-- Accessories -->
-        <section>
-
-            <h2>Accessories</h2>
-
-            <!-- Classic Cap -->
-            <article>
-                <img src="images/cap.jpg" alt="OffGrid Apparel cap">
-                <h3>Classic Cap</h3>
-                <p>R199</p>
-                <button>Add to Cart</button>
-            </article>
-
-            <!-- Shoulder Bag -->
-            <article>
-                <img src="images/shoulder_bag.jpg" alt="OffGrid Apparel shoulder bag">
-                <h3>Shoulder Bag</h3>
-                <p>R349</p>
-                <button>Add to Cart</button>
-            </article>
-
-        </section>
-
-    </main>
-
-
-    <!-- Footer -->
-    <footer>
-
-        <p>&copy; 2026 OffGrid Apparel. All rights reserved.</p>
-
-    </footer>
-
+<script src="js/script.js"></script>
 </body>
-
 </html>
