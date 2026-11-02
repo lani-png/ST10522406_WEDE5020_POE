@@ -1,7 +1,10 @@
 <!doctype html>
-<html>
+<html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore the OffGrid Apparel collection: Y2K-inspired graphic tees, baggy denim, hoodies and accessories.">
     <title>OffGrid Apparel - Collection</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -9,7 +12,7 @@
 <body class="page-collection">
 
     <!-- Header -->
-     <header>
+    <header>
 
     <a href="index.html">
         <img class="logo" src="images/OffGrid-logo.png" alt="OffGrid Apparel logo">
@@ -19,26 +22,65 @@
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="shop.html">Shop</a></li>
-            <li><a href="collection.html">Collection</a></li>
+            <li><a href="collection.html" aria-current="page">Collection</a></li>
             <li><a href="about.html">About Us</a></li>
             <li><a href="contact.html">Contact</a></li>
         </ul>
     </nav>
 
-    <form>
-        <input type="search" placeholder="Search...">
-        <button>Search</button>
-    </form>
 
+    <div class="header-actions">
+        <!-- dynamic searchbox -->
+    <div class="header-search">
+    <button class="search-toggle"
+            type="button"
+            aria-label="Open search"
+            aria-expanded="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="10.8" cy="10.8" r="6.8"></circle>
+            <path d="m16 16 5 5"></path>
+        </svg>
+    </button>
+
+    <form class="search-panel" action="search.html" method="get">
+        <input
+            type="search"
+            id="site-search"
+            name="q"
+            placeholder="Search OffGrid..."
+            autocomplete="off"
+            aria-label="Search OffGrid Apparel">
+
+        <div class="search-suggestions" id="search-suggestions">
+            <a href="shop.html" data-search="shop products clothing">
+                Shop products
+            </a>
+            <a href="collection.html" data-search="collection collections">
+                Explore collection
+            </a>
+            <a href="about.html" data-search="about us brand">
+                About OffGrid
+            </a>
+            <a href="contact.html" data-search="contact support">
+                Contact us
+            </a>
+        </div>
+    </form>
+</div>
+
+
+<!-- cart -->
     <a href="cart.html">
         <img class="cart" src="images/grocery-store (1).png" alt="Shopping cart">
     </a>
+    </div>
+    
 
 </header>
 
     <main>
 
-        <!-- Collection Introduction -->
+        <!-- Collection Introduction (the filter chips are added here by script.js) -->
         <h1>Our Collection</h1>
 
         <p>
@@ -58,21 +100,27 @@
 
             <!-- Graphic T-Shirts -->
             <article>
-                <img src="images/y2k_tees.jpg" alt="Y2K graphic T-shirt">
+                <a class="gallery-link" href="images/y2k_tees.jpg" aria-label="View larger: Y2K graphic T-shirt">
+                    <img src="images/y2k_tees.jpg" alt="Y2K graphic T-shirt" loading="lazy">
+                </a>
                 <h3>Graphic T-Shirts</h3>
                 <p>Bold designs inspired by Y2K fashion.</p>
             </article>
 
             <!-- Baggy Denim -->
             <article>
-                <img src="images/jeans.jpg" alt="Y2K baggy jeans">
+                <a class="gallery-link" href="images/jeans.jpg" aria-label="View larger: Y2K baggy jeans">
+                    <img src="images/jeans.jpg" alt="Y2K baggy jeans" loading="lazy">
+                </a>
                 <h3>Baggy Denim</h3>
                 <p>Relaxed fits for a classic streetwear look.</p>
             </article>
 
             <!-- Oversized Hoodies -->
             <article>
-                <img src="images/y2k_hoodie.jpg" alt="Y2K hoodie">
+                <a class="gallery-link" href="images/y2k_hoodie.jpg" aria-label="View larger: Y2K hoodie">
+                    <img src="images/y2k_hoodie.jpg" alt="Y2K hoodie" loading="lazy">
+                </a>
                 <h3>Oversized Hoodies</h3>
                 <p>Comfortable everyday styles.</p>
             </article>
@@ -91,13 +139,17 @@
 
             <!-- Caps -->
             <article>
-                <img src="images/fitted.jpg" alt="OffGrid Apparel cap">
+                <a class="gallery-link" href="images/fitted.jpg" aria-label="View larger: OffGrid Apparel cap">
+                    <img src="images/fitted.jpg" alt="OffGrid Apparel cap" loading="lazy">
+                </a>
                 <h3>Caps</h3>
             </article>
 
             <!-- Bags -->
             <article>
-                <img src="images/bag.jpg" alt="OffGrid Apparel shoulder bag">
+                <a class="gallery-link" href="images/bag.jpg" aria-label="View larger: OffGrid Apparel shoulder bag">
+                    <img src="images/bag.jpg" alt="OffGrid Apparel shoulder bag" loading="lazy">
+                </a>
                 <h3>Bags</h3>
             </article>
 
@@ -116,7 +168,7 @@
         <p>&copy; 2026 OffGrid Apparel. All rights reserved.</p>
 
     </footer>
-
+<script src="js/script.js"></script>
 </body>
 
 </html>
