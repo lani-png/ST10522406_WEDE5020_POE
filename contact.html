@@ -1,7 +1,10 @@
 <!doctype html>
-<html>
+<html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact the OffGrid Apparel team with a question, order query or feedback.">
     <title>OffGrid Apparel - Contact</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -9,7 +12,7 @@
 <body class="page-contact">
 
     <!-- Header -->
-     <header>
+    <header>
 
     <a href="index.html">
         <img class="logo" src="images/OffGrid-logo.png" alt="OffGrid Apparel logo">
@@ -21,21 +24,59 @@
             <li><a href="shop.html">Shop</a></li>
             <li><a href="collection.html">Collection</a></li>
             <li><a href="about.html">About Us</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="contact.html" aria-current="page">Contact</a></li>
         </ul>
     </nav>
 
-    <form>
-        <input type="search" placeholder="Search...">
-        <button>Search</button>
-    </form>
 
+    <div class="header-actions">
+        <!-- dynamic searchbox -->
+    <div class="header-search">
+    <button class="search-toggle"
+            type="button"
+            aria-label="Open search"
+            aria-expanded="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="10.8" cy="10.8" r="6.8"></circle>
+            <path d="m16 16 5 5"></path>
+        </svg>
+    </button>
+
+    <form class="search-panel" action="search.html" method="get">
+        <input
+            type="search"
+            id="site-search"
+            name="q"
+            placeholder="Search OffGrid..."
+            autocomplete="off"
+            aria-label="Search OffGrid Apparel">
+
+        <div class="search-suggestions" id="search-suggestions">
+            <a href="shop.html" data-search="shop products clothing">
+                Shop products
+            </a>
+            <a href="collection.html" data-search="collection collections">
+                Explore collection
+            </a>
+            <a href="about.html" data-search="about us brand">
+                About OffGrid
+            </a>
+            <a href="contact.html" data-search="contact support">
+                Contact us
+            </a>
+        </div>
+    </form>
+</div>
+
+
+<!-- cart -->
     <a href="cart.html">
         <img class="cart" src="images/grocery-store (1).png" alt="Shopping cart">
     </a>
+    </div>
+    
 
 </header>
-
 
     <main>
 
@@ -72,36 +113,125 @@
 
         </section>
 
+        <!-- Interactive Map -->
+        <section>
+            <h2>Find Us</h2>
+            <p>Visit our flagship store or pickup location in Sandton.</p>
+            <div style="width: 100%; max-width: 700px; height: 350px; margin-top: 15px; border-radius: 8px; overflow: hidden; border: 1px solid var(--line);">
+                <iframe 
+                    title="OffGrid Apparel Location Map"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3584.215569485293!2d28.0535!3d-26.1076!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e95730b20cb3a89%3A0x6e2df4532b0a37e0!2s45%20Rivonia%20Rd%2C%20Sandhurst%2C%20Sandton%2C%202196%2C%20South%20Africa!5e0!3m2!1sen!2sus!4v1650000000000!5m2!1sen!2sus" 
+                    width="100%" 
+                    height="100%" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </section>
+
 
         <!-- Contact Form -->
-        <section>
+        <div class="form-panel">
 
-            <h2>Send Us a Message</h2>
+            <h2 id="contact-form-title">Send Us a Message</h2>
 
-            <form>
 
-                <label for="name">Full Name:</label>
-                <input type="text" id="name" name="name">
+            <form id="contact-form" class="form"
+                  action="mailto:info@offgridapparel.co.za"
+                  method="post" enctype="text/plain"
+                  aria-labelledby="contact-form-title">
 
-                <br><br>
+                <p class="form-note">Fields marked * are required.</p>
 
-                <label for="email">Email Address:</label>
-                <input type="email" id="email" name="email">
+                <div class="form-row">
+                    <div class="field">
+                        <label for="name">Full name *</label>
+                        <input type="text" id="name" name="name"
+                               required minlength="2" maxlength="60"
+                               pattern="[A-Za-zÀ-ÿ' \-]+"
+                               autocomplete="name" placeholder="e.g. Thandi Nkosi"
+                               data-pattern-message="Use letters, spaces, hyphens and apostrophes only.">
+                    </div>
 
-                <br><br>
+                    <div class="field">
+                        <label for="email">Email address *</label>
+                        <input type="email" id="email" name="email"
+                               required maxlength="100"
+                               autocomplete="email" placeholder="name@example.com">
+                    </div>
+                </div>
 
-                <label for="message">Message:</label>
-                <br>
+                <div class="form-row">
+                    <div class="field">
+                        <label for="phone">Phone number <span class="optional">(optional)</span></label>
+                        <input type="tel" id="phone" name="phone"
+                               inputmode="tel" maxlength="16"
+                               pattern="(\+27|0)[0-9 \-]{8,14}"
+                               autocomplete="tel" placeholder="011 456 7890"
+                               data-pattern-message="Enter a South African number, e.g. 011 456 7890 or +27 82 123 4567."
+                               data-required-message="Add a phone number so we can call you back, or choose email.">
+                    </div>
 
-                <textarea id="message" name="message" rows="6" cols="40"></textarea>
+                    <div class="field">
+                        <label for="messageType">Type of message *</label>
+                        <select id="messageType" name="messageType" required>
+                            <option value="">Select a type</option>
+                            <option value="general">General question</option>
+                            <option value="order">Order or delivery</option>
+                            <option value="returns">Returns and exchanges</option>
+                            <option value="sizing">Sizing help</option>
+                            <option value="wholesale">Wholesale or stockist</option>
+                            <option value="feedback">Feedback</option>
+                        </select>
+                    </div>
+                </div>
 
-                <br><br>
+                <!-- Shown by script.js only for order / returns messages -->
+                <div class="field" id="order-field" hidden>
+                    <label for="order">Order number *</label>
+                    <input type="text" id="order" name="order"
+                           maxlength="8" pattern="[Oo][Gg]-[0-9]{5}"
+                           placeholder="OG-12345" disabled
+                           data-pattern-message="Order numbers look like OG-12345."
+                           data-required-message="Enter your order number so we can find your order.">
+                </div>
 
-                <input type="submit" value="Send Message">
+                <fieldset class="field">
+                    <legend>How should we reply? *</legend>
+                    <div class="choice-row">
+                        <label class="choice">
+                            <input type="radio" name="replyBy" value="email" checked required>
+                            <span>By email</span>
+                        </label>
+                        <label class="choice">
+                            <input type="radio" name="replyBy" value="phone" required>
+                            <span>By phone</span>
+                        </label>
+                    </div>
+                </fieldset>
+
+                <div class="field">
+                    <label for="message">Your message *</label>
+                    <textarea id="message" name="message" rows="6"
+                              required minlength="20" maxlength="1000"
+                              data-counter="#message-count"
+                              placeholder="Tell us how we can help (at least 20 characters)"></textarea>
+                    <p class="char-count" id="message-count">0 / 1000</p>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn">Review email</button>
+                    <button type="reset" class="btn btn-secondary">Clear form</button>
+                </div>
 
             </form>
 
-        </section>
+            <!-- Filled in by script.js once the form is valid -->
+            <div class="email-preview" id="email-preview" hidden></div>
+
+        </div>
 
     </main>
 
@@ -112,7 +242,7 @@
         <p>&copy; 2026 OffGrid Apparel. All rights reserved.</p>
 
     </footer>
-
+<script src="js/script.js"></script>
 </body>
 
 </html>
